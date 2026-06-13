@@ -3,7 +3,7 @@ import userContext from './UserContext'
 
 
 function userContextProvider({childern}) {
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState(null)
 
   return (
     <userContext.Provider value={{user,setUser}}>
