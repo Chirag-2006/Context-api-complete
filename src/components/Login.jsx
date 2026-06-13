@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import userContext from "../context/UserContext";
-import UserContextProvider from "../context/UserContextProvider";
+// import UserContextProvider from "../context/UserContextProvider";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -8,7 +8,7 @@ function Login() {
 
   //   useContext use
 
-  const { setUser } = UserContextProvider(userContext);
+  const { setUser } = useContext(userContext);
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import userContext from "../context/UserContext";
-import UserContextProvider from "../context/UserContextProvider";
+// import UserContextProvider from "../context/UserContextProvider";
 
 function Profile() {
-  const { user } = UserContextProvider(userContext);
+  const { user } = useContext(userContext);
 
   if (!user) {
     return <div>Login first</div>;
