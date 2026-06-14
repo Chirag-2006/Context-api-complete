@@ -37,7 +37,9 @@ function App() {
     async function getTodoFromLocalStorage() {
       const todos = JSON.parse(localStorage.getItem("todos"));
       console.log("todos in get localsotrage", todos);
-       setTodos(todos);
+      if (todos && todos.length > 0) {
+        setTodos(todos);
+      }
     }
     getTodoFromLocalStorage();
   }, []);
