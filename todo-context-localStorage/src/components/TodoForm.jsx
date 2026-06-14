@@ -8,7 +8,7 @@ function TodoForm() {
 
   function add(e) {
     e.preventDefault();
-    addTodo({ todo });
+    addTodo({ todo, isCompleted: false });
     setTodo("");
   }
 
