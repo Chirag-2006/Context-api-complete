@@ -14,7 +14,7 @@ function App() {
   function updateTodo(todo, id) {
     setTodos((prev) =>
       prev.map((currTodo) =>
-        currTodo.id === id ? { ...currTodo, todo: todo } : currTodo,
+        currTodo.id === id ? todo : currTodo,
       ),
     );
   }
@@ -24,6 +24,7 @@ function App() {
   }
 
   function toggleTodo(id) {
+    console.log("id in toggletodo",id)
     setTodos((prev) =>
       prev.map((currTodo) => {
         currTodo.id === id
@@ -31,6 +32,7 @@ function App() {
           : currTodo;
       }),
     );
+    console.log("todos after cheack",todos)
   }
 
   useEffect(() => {
@@ -67,7 +69,7 @@ function App() {
           </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
-            {todos?.map((todo) => (
+            {todos.map((todo) => (
               <div key={todo.id} className="w-full">
                 <TodoItem todo={todo} />
               </div>

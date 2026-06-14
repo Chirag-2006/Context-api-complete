@@ -4,23 +4,24 @@ import useTodo from "../contexts/todoContext";
 function TodoItem({ todo }) {
   const { deleteTodo, updateTodo, toggleTodo } = useTodo();
 
-  const [todoMsg, setTodoMsg] = useState("");
+  const [todoMsg, setTodoMsg] = useState(todo.todo);
   const [isTodoEditable, setIsTodoEditable] = useState(false);
 
   const toggleCompleted = () => {
+    console.log("toggle id", todo.id);
     toggleTodo(todo.id);
   };
 
   function editTodo() {
     updateTodo({ ...todo, todo: todoMsg }, todo.id);
-    setIsTodoEditable(false)
+    setIsTodoEditable(false);
   }
 
   function deleteTodoFunction() {
     deleteTodo(todo.id);
   }
 
-  console.log("todomsg",todoMsg)
+  console.log("todomsg", todoMsg);
 
   return (
     <div
@@ -40,7 +41,7 @@ function TodoItem({ todo }) {
         className={`border outline-none w-full bg-transparent rounded-lg ${
           isTodoEditable ? "border-black/10 px-2" : "border-transparent"
         } ${todo.isCompleted ? "line-through" : ""}`}
-        value={todo.todo}
+        value={todoMsg}
         onChange={(e) => setTodoMsg(e.target.value)}
         readOnly={!isTodoEditable}
       />
