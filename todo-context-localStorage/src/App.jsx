@@ -5,7 +5,9 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   function addTodo(todo) {
-    setTodos([...todos, todo]);
+    setTodos((prev) => {
+      [{ ...todo, id: Date.now() }, ...prev];
+    });
     console.log("add Todo Function ", todos);
   }
 
