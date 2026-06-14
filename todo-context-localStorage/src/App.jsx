@@ -13,9 +13,7 @@ function App() {
 
   function updateTodo(todo, id) {
     setTodos((prev) =>
-      prev.map((currTodo) =>
-        currTodo.id === id ? todo : currTodo,
-      ),
+      prev.map((currTodo) => (currTodo.id === id ? todo : currTodo)),
     );
   }
 
@@ -24,15 +22,15 @@ function App() {
   }
 
   function toggleTodo(id) {
-    console.log("id in toggletodo",id)
+    console.log("id in toggletodo", id);
     setTodos((prev) =>
-      prev.map((currTodo) => {
+      prev.map((currTodo) =>
         currTodo.id === id
           ? { ...currTodo, isCompleted: !currTodo.isCompleted }
-          : currTodo;
-      }),
+          : currTodo,
+      ),
     );
-    console.log("todos after cheack",todos)
+    console.log("todos after cheack", todos);
   }
 
   useEffect(() => {
@@ -53,6 +51,8 @@ function App() {
     }
     setTodoInLocalStorage();
   }, [todos]);
+
+  console.log("todos in app", todos);
 
   return (
     <TodoProvider

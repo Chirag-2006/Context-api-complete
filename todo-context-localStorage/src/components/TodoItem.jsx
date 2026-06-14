@@ -21,7 +21,6 @@ function TodoItem({ todo }) {
     deleteTodo(todo.id);
   }
 
-  console.log("todomsg", todoMsg);
 
   return (
     <div
