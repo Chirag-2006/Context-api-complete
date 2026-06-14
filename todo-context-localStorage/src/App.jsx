@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoProvider } from "./contexts/todoContext";
 
 function App() {
@@ -36,6 +36,24 @@ function App() {
       });
     });
   }
+
+  useEffect(() => {
+    async function getTodoFromLocalStorage() {
+      const todos = await JSON.parse(localStorage.getItem("todos"));
+      await setTodos(todos);
+    }
+    getTodoFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    async function setTodoInLocalStorage() {
+      const stringifyTodo = JSON.stringify(
+        localStorage.setItem("todos", todos),
+      );
+      localStorage.setItem("todos", stringifyTodo);
+    }
+    setTodoInLocalStorage();
+  }, [todos]);
 
   return (
     <TodoProvider
