@@ -16,15 +16,22 @@ function App() {
   }
 
   // actual theme kese change hoti hai?
+
   useEffect(() => {
-    // function changeTheme() {
-    let classList = document.querySelector("html").classList;
-    classList.remove("dark", "light");
-    classList.add(themeMode);
-    console.log(classList);
-    // }
-    // changeTheme();
+    function changeTheme() {
+      const classList = document.querySelector("html").classList;
+      classList.remove("dark", "light");
+      classList.add(themeMode);
+    }
+    changeTheme();
   }, [themeMode]);
+
+  // useEffect(() => {
+  //   let classList = document.querySelector("html").classList;
+  //   classList.remove("dark", "light");
+  //   classList.add(themeMode);
+  //   console.log(classList);
+  // }, [themeMode]);
 
   return (
     <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
