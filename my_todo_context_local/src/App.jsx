@@ -5,18 +5,28 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   function addTodo(todoObj) {
-    setTodos((perv) => [{ ...todoObj, id: Date.now() }, ...perv]);
+    setTodos((prev) => [{ ...todoObj, id: Date.now() }, ...prev]);
   }
 
   function updateTodo(id, newTodo) {
-    setTodos((perv) =>
-      perv.map((currTodo) =>
+    setTodos((prev) =>
+      prev.map((currTodo) =>
         currTodo.id === id ? { todo: newTodo } : currTodo,
       ),
     );
   }
-  function deleteTodo() {}
-  function toggleTodo() {}
+
+  function deleteTodo(id) {
+    setTodos((prev) => prev.filter((currTodo) => currTodo.id !== id));
+  }
+
+  function toggleTodo(id) {
+    setTodos((prev) =>
+      prev.map((currTodo) =>
+        currTodo.id === id ? { isCompleted: !currTodo.isCompleted } : currTodo,
+      ),
+    );
+  }
 
   return (
     <TodoProvider
