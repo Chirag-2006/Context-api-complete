@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoProvider } from "./contexts/useTodos";
 
 function App() {
@@ -27,6 +27,24 @@ function App() {
       ),
     );
   }
+
+
+  // ********************************  Local Storage Functionlity ********************************
+  useEffect(() => {
+    function getTodoFromLocalStorage() {
+      const todosFromLocal = JSON.parse(localStorage.getItem("todos"));
+      setTodos(todosFromLocal);
+    }
+
+    getTodoFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    const setTokenToLocalStorage = () => {
+      JSON.stringify(localStorage.setItem("todos", todos));
+    };
+    setTokenToLocalStorage();
+  }, [todos]);
 
   return (
     <TodoProvider
