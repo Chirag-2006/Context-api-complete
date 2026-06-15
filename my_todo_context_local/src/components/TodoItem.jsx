@@ -8,8 +8,9 @@ function TodoItem({ todo }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
 
   function editTodo() {
+    // setIsTodoEditable(true) // to make the input field editable and then on next click of edit button it will save the changes what if i don't write this line of code then the input field will not become editable and the user will not be able to edit the todo text
     updateTodo(todo.id, newTodoText);
-    isTodoEditable(false);
+    setIsTodoEditable(false);
   }
 
   function deleteTodoFn(id) {
