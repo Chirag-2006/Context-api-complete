@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { TodoProvider } from "./contexts/useTodos";
 import TodoForm from "./components/TodoForm";
+import TodoItem from "./components/TodoItem";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -33,7 +34,7 @@ function App() {
   useEffect(() => {
     function getTodoFromLocalStorage() {
       const todosFromLocal = JSON.parse(localStorage.getItem("todos"));
-      console.log("todos in localstorage",todosFromLocal)
+      console.log("todos in localstorage", todosFromLocal);
       if (todosFromLocal && todosFromLocal.length > 0) {
         setTodos(todosFromLocal);
       }
@@ -64,6 +65,11 @@ function App() {
           </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
+            {todos.map((currTodo) => (
+              <div key={currTodo.id} className="w-full">
+                <TodoItem todo={currTodo} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
