@@ -7,7 +7,14 @@ function App() {
   function addTodo(todoObj) {
     setTodos((perv) => [{ ...todoObj, id: Date.now() }, ...perv]);
   }
-  function updateTodo() {}
+
+  function updateTodo(id, newTodo) {
+    setTodos((perv) =>
+      perv.map((currTodo) =>
+        currTodo.id === id ? { todo: newTodo } : currTodo,
+      ),
+    );
+  }
   function deleteTodo() {}
   function toggleTodo() {}
 
