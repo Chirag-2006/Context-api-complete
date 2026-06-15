@@ -25,7 +25,7 @@ function App() {
   function toggleTodo(id) {
     setTodos((prev) =>
       prev.map((currTodo) =>
-        currTodo.id === id ? { isCompleted: !currTodo.isCompleted } : currTodo,
+        currTodo.id === id ? { ...currTodo, isCompleted: !currTodo.isCompleted } : currTodo,
       ),
     );
   }
