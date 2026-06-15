@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { TodoProvider } from "./contexts/useTodos";
+import TodoForm from "./components/TodoForm";
 
 function App() {
   const [todos, setTodos] = useState([]);
 
   function addTodo(todoObj) {
-    setTodos((prev) => [{ ...todoObj, id: Date.now() }, ...prev]);
+    setTodos((prev) => [{ ...todoObj }, ...prev]);
   }
 
   function updateTodo(id, newTodo) {
@@ -32,6 +33,7 @@ function App() {
   useEffect(() => {
     function getTodoFromLocalStorage() {
       const todosFromLocal = JSON.parse(localStorage.getItem("todos"));
+      console.log("todos in localstorage",todosFromLocal)
       if (todosFromLocal && todosFromLocal.length > 0) {
         setTodos(todosFromLocal);
       }
@@ -42,7 +44,7 @@ function App() {
 
   useEffect(() => {
     // function setTodoToLocalStorage() {
-      localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("todos", JSON.stringify(todos));
     // }
     // setTodoToLocalStorage();
   }, [todos]);
@@ -56,7 +58,10 @@ function App() {
           <h1 className="text-2xl font-bold text-center mb-8 mt-2">
             Manage Your Todos
           </h1>
-          <div className="mb-4">{/* Todo form goes here */}</div>
+          <div className="mb-4">
+            {/* Todo form goes here */}
+            <TodoForm />
+          </div>
           <div className="flex flex-wrap gap-y-3">
             {/*Loop and Add TodoItem here */}
           </div>
