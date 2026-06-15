@@ -28,22 +28,23 @@ function App() {
     );
   }
 
-
   // ********************************  Local Storage Functionlity ********************************
   useEffect(() => {
     function getTodoFromLocalStorage() {
       const todosFromLocal = JSON.parse(localStorage.getItem("todos"));
-      setTodos(todosFromLocal);
+      if (todosFromLocal && todosFromLocal.length > 0) {
+        setTodos(todosFromLocal);
+      }
     }
 
     getTodoFromLocalStorage();
   }, []);
 
   useEffect(() => {
-    const setTokenToLocalStorage = () => {
-      JSON.stringify(localStorage.setItem("todos", todos));
-    };
-    setTokenToLocalStorage();
+    // function setTodoToLocalStorage() {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    // }
+    // setTodoToLocalStorage();
   }, [todos]);
 
   return (
