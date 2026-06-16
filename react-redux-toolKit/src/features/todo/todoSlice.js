@@ -19,14 +19,14 @@ export const todoSlice = createSlice({
       const id = action.payload;
       state.todos = state.todos.filter((currTodo) => currTodo.id !== id);
     },
-  },
-  updateTodo: function (state, action) {
-    const id = action.payload;
-    const newTodoText = action.payload;
+    updateTodo: function (state, action) {
+      const { id, newText } = action.payload;
 
-    state.todos = state.todos.map((currTodo) =>
-      currTodo.id === id ? { ...currTodo, todoText: newTodoText } : currTodo,
-    );
+  
+      state.todos = state.todos.map((currTodo) =>
+        currTodo.id === id ? { ...currTodo, todoText: newText } : currTodo,
+      );
+    },
   },
 });
 
