@@ -11,11 +11,16 @@ function Todos() {
 
   return (
     <>
-      <div>Todos</div>
+      {/* <div>Todos</div> */}
       {todos.map((todo) => (
         <li key={todo.id}>
-          {todo.text}
-          <button onClick={deleteTodo(todo.id)}>X</button>
+          {todo.todoText}{" "}
+          <button
+            className="bg-red-500 text-white px-2 py-1 rounded text-3xl"
+            onClick={() => deleteTodo(todo.id)}
+          >
+            delte
+          </button>
         </li>
       ))}
     </>
